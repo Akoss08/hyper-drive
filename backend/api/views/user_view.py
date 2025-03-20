@@ -1,7 +1,7 @@
 from ..models import CustomUser
 from rest_framework import generics
 from ..serializers.user_serializer import CustomUserSerializer
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
 class CreateUserView(generics.CreateAPIView):
