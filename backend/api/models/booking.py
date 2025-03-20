@@ -21,7 +21,7 @@ class Booking(models.Model):
 
         existing_bookings = Booking.objects.filter(
             user=self.user, booked_date__date=booked_day
-        )
+        ).exclude(id=self.id)
 
         if existing_bookings.exists():
             raise ValidationError(

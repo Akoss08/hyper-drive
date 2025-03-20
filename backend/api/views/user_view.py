@@ -4,13 +4,13 @@ from ..serializers.user_serializer import CustomUserSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 
-class CreateUserView(generics.CreateAPIView):
+class UserCreateView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
     permission_classes = [AllowAny]
 
 
-class GetCurrentUserView(generics.RetrieveUpdateAPIView):
+class CurrentUserGetUpdateView(generics.RetrieveUpdateAPIView):
     serializer_class = CustomUserSerializer
     permission_classes = [IsAuthenticated]
 
@@ -18,7 +18,7 @@ class GetCurrentUserView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 
-class DeleteCurrentUserView(generics.DestroyAPIView):
+class CurrentUserDeleteView(generics.DestroyAPIView):
     serializer_class = CustomUserSerializer
     permission_classes = [IsAuthenticated]
 
