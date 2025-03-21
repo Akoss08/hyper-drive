@@ -1,5 +1,11 @@
+import os
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+django.setup()
+
 from django.test import TestCase
-from ...models.user import CustomUser
+from api.models.user import CustomUser
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 
