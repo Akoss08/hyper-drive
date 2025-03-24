@@ -37,3 +37,18 @@ class UserIntegrationTest(TestCase):
         self.assertEqual(response.data["username"], "testuser2")
 
     def test_register_user_username_duplicate(self):
+        url = reverse("register")
+        response = self.client.post(
+            url,
+            {
+                "username": "testuser",
+                "first_name": "Test",
+                "last_name": "User",
+                "email": "testuser2@gmail.com",
+                "password": "pass",
+            },
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
