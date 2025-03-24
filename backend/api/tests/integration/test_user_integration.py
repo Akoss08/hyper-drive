@@ -18,3 +18,22 @@ class UserIntegrationTest(TestCase):
         }
         self.user = CustomUser.objects.create_user(**self.user_data)
 
+    def test_register_user(self):
+        url = reverse("register")
+        response = self.client.post(
+            url,
+            {
+                "username": "testuser2",
+                "first_name": "Test",
+                "last_name": "User",
+                "email": "testuser2@gmail.com",
+                "password": "pass",
+            },
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(CustomUser.objects.count(), 2)
+        self.assertEqual(response.data["username"], "testuser2")
+
+    def test_register_user_username_duplicate(self):
