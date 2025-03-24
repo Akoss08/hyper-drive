@@ -116,3 +116,11 @@ class UserIntegrationTest(TestCase):
         self.assertEqual(profile_response.status_code, status.HTTP_200_OK)
         self.assertEqual(profile_response.data["username"], "testuser")
 
+    def test_get_login_user_data_no_token_provided(self):
+        profile_url = reverse("user_get_update")
+
+        profile_response = self.client.get(profile_url)
+
+        self.assertEqual(
+            profile_response.status_code, status.HTTP_401_UNAUTHORIZED
+        )
