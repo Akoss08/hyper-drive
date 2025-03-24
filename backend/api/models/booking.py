@@ -3,6 +3,7 @@ from .user import CustomUser
 from .car import Car
 from .track import Track
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 class Booking(models.Model):
