@@ -3,7 +3,7 @@ from api.models.car import Car
 from django.core.exceptions import ValidationError
 
 
-class CustomUserManagerTest(TestCase):
+class CarModelTest(TestCase):
 
     def test_create_car(self):
         car = Car.objects.create(
