@@ -17,6 +17,12 @@ class Booking(models.Model):
         unique_together = ("user", "booked_date")
 
     def clean(self):
+        if self.booked_date.tzinfo is None:
+            self.booked_date = timezone.make_aware(self.booked_date)
+
+        if self.booked_date < timezone.now():
+            raise ValidationError("You cannot book a date in the past.")
+
         booked_day = self.booked_date.date()
 
         existing_bookings = Booking.objects.filter(
