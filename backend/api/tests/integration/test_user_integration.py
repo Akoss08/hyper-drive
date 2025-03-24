@@ -4,6 +4,9 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from api.models import CustomUser
 
+
+class UserIntegrationTest(TestCase):
+
     def setUp(self):
         self.client = APIClient()
         self.user_data = {
