@@ -169,3 +169,11 @@ class UserIntegrationTest(TestCase):
             profile_response.status_code, status.HTTP_204_NO_CONTENT
         )
 
+    def test_delete_user_no_token_provided(self):
+        profile_url = reverse("user_get_update")
+
+        profile_response = self.client.delete(profile_url)
+
+        self.assertEqual(
+            profile_response.status_code, status.HTTP_401_UNAUTHORIZED
+        )
