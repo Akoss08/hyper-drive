@@ -124,6 +124,7 @@ class UserIntegrationTest(TestCase):
         self.assertEqual(
             profile_response.status_code, status.HTTP_401_UNAUTHORIZED
         )
+
     def test_update_login_user(self):
         login_url = reverse("get_token")
         profile_url = reverse("user_get_update")
@@ -145,4 +146,26 @@ class UserIntegrationTest(TestCase):
 
         self.assertEqual(profile_response.status_code, status.HTTP_200_OK)
         self.assertEqual(profile_response.data["username"], "changed")
+
+    def test_delete_user(self):
+        login_url = reverse("get_token")
+        profile_url = reverse("delete_user")
+
+        login_response = self.client.post(
+            login_url,
+            {
+                "username": self.user.username,
+                "password": self.user_data["password"],
+            },
+            format="json",
+        )
+
+        profile_response = self.client.delete(
+            profile_url,
+            HTTP_AUTHORIZATION=f"Bearer {login_response.data["access"]}",
+        )
+
+        self.assertEqual(
+            profile_response.status_code, status.HTTP_204_NO_CONTENT
+        )
 
