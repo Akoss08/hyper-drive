@@ -82,3 +82,16 @@ class UserIntegrationTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("ey", response.data["access"])
 
+    def test_login_user_bad_credentials(self):
+        url = reverse("get_token")
+        response = self.client.post(
+            url,
+            {
+                "username": "someuser",
+                "password": self.user_data["password"],
+            },
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
