@@ -5,3 +5,5 @@ from rest_framework.test import APIClient
 from api.models import CustomUser, Track, Car, Booking
 
 
+class BookingIntegrationTest(TestCase):
+
