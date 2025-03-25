@@ -147,3 +147,18 @@ class BookingIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    def test_update_booking_authorized_valid_id(self):
+        url = reverse("booking_update", kwargs={"pk": self.booking.id})
+
+        response = self.client.patch(
+            url,
+            {
+                "booked_date": "2025-03-28 15:30:00",
+            },
+            HTTP_AUTHORIZATION=f"Bearer {self.token}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["booked_date"], "2025-03-28T15:30:00Z")
+
