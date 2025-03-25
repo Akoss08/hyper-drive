@@ -90,3 +90,33 @@ class CarIntegrationTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["make"], "Ferrari")
 
+    def test_create_new_car_user(self):
+        url = reverse("car_lis_create")
+        login_url = reverse("get_token")
+
+        login_response = self.client.post(
+            login_url,
+            {"username": "testuser", "password": "pass"},
+            format="json",
+        )
+
+        response = self.client.post(
+            url,
+            {
+                "make": "Lamborghini",
+                "model": "Urus",
+                "year": 2023,
+                "engine_size": 5.5,
+                "horsepower": 780,
+                "cylinders": 12,
+                "torque": 900,
+                "top_speed": 420,
+                "kph_from_zero_to_hundred": 2.3,
+                "model_asset_path": "some/path/to/model",
+            },
+            HTTP_AUTHORIZATION=f"Bearer {login_response.data["access"]}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
