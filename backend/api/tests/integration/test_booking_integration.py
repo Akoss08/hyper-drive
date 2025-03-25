@@ -73,3 +73,41 @@ class BookingIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    def test_create_new_booking_authorized(self):
+        url = reverse("booking_list_create")
+
+        track = Track.objects.create(
+            name="Hungaroring",
+            location="Mogyorod",
+            distance_km=1.23,
+            avg_lap_time_minute=1.03,
+            difficulty="Easy",
+            model_asset_path="some/path/to/model",
+        )
+        car = Car.objects.create(
+            make="Porsche",
+            model="GT 3 RS",
+            year=2024,
+            engine_size=3.5,
+            horsepower=650,
+            cylinders=12,
+            torque=500,
+            top_speed=380,
+            kph_from_zero_to_hundred=2.5,
+            model_asset_path="some/path/to/model",
+        )
+
+        response = self.client.post(
+            url,
+            {
+                "car": car.id,
+                "track": track.id,
+                "booked_date": "2025-03-27 15:30:00",
+            },
+            HTTP_AUTHORIZATION=f"Bearer {self.token}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data["car"], car.id)
+
