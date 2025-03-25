@@ -52,3 +52,15 @@ class BookingIntegrationTest(TestCase):
         )
         self.token = login_response.data["access"]
 
+    def test_get_all_bookings_authorized(self):
+        url = reverse("booking_list_create")
+        response = self.client.get(
+            url,
+            HTTP_AUTHORIZATION=f"Bearer {self.token}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(CustomUser.objects.count(), 1)
+        self.assertEqual(response.data[0]["user"], self.user.id)
+
