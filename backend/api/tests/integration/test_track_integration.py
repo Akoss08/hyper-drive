@@ -104,3 +104,11 @@ class TrackIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
+    def test_get_track_details_valid_id(self):
+        url = reverse("track_detail", kwargs={"pk": self.track_1.id})
+
+        response = self.client.get(url, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["name"], "Sylverstone")
+
