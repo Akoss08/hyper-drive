@@ -189,3 +189,14 @@ class BookingIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
+    def test_delete_booking_authorized_valid_id(self):
+        url = reverse("booking_delete", kwargs={"pk": self.booking.id})
+
+        response = self.client.delete(
+            url,
+            HTTP_AUTHORIZATION=f"Bearer {self.token}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
