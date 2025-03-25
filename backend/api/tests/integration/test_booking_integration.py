@@ -200,3 +200,14 @@ class BookingIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
+    def test_delete_booking_authorized_invalid_id(self):
+        url = reverse("booking_delete", kwargs={"pk": 10})
+
+        response = self.client.delete(
+            url,
+            HTTP_AUTHORIZATION=f"Bearer {self.token}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
