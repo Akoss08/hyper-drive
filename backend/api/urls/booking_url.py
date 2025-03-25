@@ -2,7 +2,11 @@ from django.urls import path
 from ..views import booking_view
 
 urlpatterns = [
-    path("", booking_view.BookingListCreate.as_view(), name="booking_list"),
+    path(
+        "",
+        booking_view.BookingListCreate.as_view(),
+        name="booking_list_create",
+    ),
     path(
         "delete/<int:pk>/",
         booking_view.BookingDelete.as_view(),
