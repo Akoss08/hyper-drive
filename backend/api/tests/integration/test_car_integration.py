@@ -128,3 +128,9 @@ class CarIntegrationTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["make"], "Ford")
 
+    def test_get_car_details_invalid_id(self):
+        url = reverse("car_detail", kwargs={"pk": 10})
+
+        response = self.client.get(url, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
