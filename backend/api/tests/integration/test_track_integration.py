@@ -78,3 +78,29 @@ class TrackIntegrationTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["name"], "Nurnberg")
 
+    def test_create_new_track_user(self):
+        url = reverse("track_list_create")
+        login_url = reverse("get_token")
+
+        login_response = self.client.post(
+            login_url,
+            {"username": "testuser", "password": "pass"},
+            format="json",
+        )
+
+        response = self.client.post(
+            url,
+            {
+                "name": "Austral GP",
+                "location": "Melbourne",
+                "distance_km": 3.92,
+                "avg_lap_time_minute": 1.53,
+                "difficulty": "Hard",
+                "model_asset_path": "some/path/to/model",
+            },
+            HTTP_AUTHORIZATION=f"Bearer {login_response.data["access"]}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
