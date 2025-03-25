@@ -112,3 +112,9 @@ class TrackIntegrationTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["name"], "Sylverstone")
 
+    def test_get_track_details_invalid_id(self):
+        url = reverse("track_detail", kwargs={"pk": 10})
+
+        response = self.client.get(url, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
