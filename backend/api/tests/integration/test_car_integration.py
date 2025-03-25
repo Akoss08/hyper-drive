@@ -49,3 +49,15 @@ class CarIntegrationTest(TestCase):
             kph_from_zero_to_hundred=2.5,
             model_asset_path="some/path/to/model",
         )
+
+    def test_get_all_car(self):
+        url = reverse("car_lis_create")
+        response = self.client.get(
+            url,
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(CustomUser.objects.count(), 2)
+        self.assertEqual(response.data[0]["make"], "Ford")
+
