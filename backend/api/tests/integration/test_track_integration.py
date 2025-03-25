@@ -53,3 +53,28 @@ class TrackIntegrationTest(TestCase):
         self.assertEqual(CustomUser.objects.count(), 2)
         self.assertEqual(response.data[0]["name"], "Sylverstone")
 
+    def test_create_new_track_admin(self):
+        url = reverse("track_list_create")
+        login_url = reverse("get_token")
+
+        login_response = self.client.post(
+            login_url, {"username": "admin", "password": "pass"}, format="json"
+        )
+
+        response = self.client.post(
+            url,
+            {
+                "name": "Nurnberg",
+                "location": "Germany",
+                "distance_km": 1.92,
+                "avg_lap_time_minute": 1.23,
+                "difficulty": "Hard",
+                "model_asset_path": "some/path/to/model",
+            },
+            HTTP_AUTHORIZATION=f"Bearer {login_response.data["access"]}",
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data["name"], "Nurnberg")
+
