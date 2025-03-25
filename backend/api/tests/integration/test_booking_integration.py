@@ -211,3 +211,12 @@ class BookingIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
+    def test_delete_booking_unauthorized(self):
+        url = reverse("booking_delete", kwargs={"pk": self.booking.id})
+
+        response = self.client.delete(
+            url,
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
