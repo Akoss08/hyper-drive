@@ -64,3 +64,12 @@ class BookingIntegrationTest(TestCase):
         self.assertEqual(CustomUser.objects.count(), 1)
         self.assertEqual(response.data[0]["user"], self.user.id)
 
+    def test_get_all_bookings_unauthorized(self):
+        url = reverse("booking_list_create")
+        response = self.client.get(
+            url,
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
