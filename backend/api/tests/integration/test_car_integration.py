@@ -120,3 +120,11 @@ class CarIntegrationTest(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
+    def test_get_car_details_valid_id(self):
+        url = reverse("car_detail", kwargs={"pk": self.car_1.id})
+
+        response = self.client.get(url, format="json")
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data["make"], "Ford")
+
