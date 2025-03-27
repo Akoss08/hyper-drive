@@ -17,6 +17,12 @@ function Logout() {
   localStorage.clear();
   return <Navigate to="/" />;
 }
+
+function RegisterAndLogout() {
+  localStorage.clear();
+  return <Register />;
+}
+
   return (
     <>
       <h1 className="text-red-500 bg-amber-200">Hali</h1>
