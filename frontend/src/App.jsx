@@ -23,9 +23,12 @@ function RegisterAndLogout() {
   return <Register />;
 }
 
+function Layout() {
   return (
     <>
-      <h1 className="text-red-500 bg-amber-200">Hali</h1>
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   );
 }
