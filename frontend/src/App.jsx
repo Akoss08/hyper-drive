@@ -33,4 +33,65 @@ function Layout() {
   );
 }
 
+function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/logout',
+          element: <Logout />,
+        },
+        {
+          path: '/cars',
+          element: <Cars />,
+        },
+        {
+          path: '/circuits',
+          element: <Circuits />,
+        },
+        {
+          path: '/cars/:id',
+          element: <Car />,
+        },
+        {
+          path: '/circuits/:id',
+          element: <Circuit />,
+        },
+        {
+          path: '/register',
+          element: <RegisterAndLogout />,
+        },
+        {
+          path: '/account',
+          element: (
+            <ProtectedRoute>
+              <Account />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: '/booking',
+          element: (
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: '*',
+          element: <NotFound />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+}
+
 export default App;
