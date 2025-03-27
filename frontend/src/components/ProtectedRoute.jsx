@@ -43,3 +43,7 @@
       setIsAuthorized(false);
     }
   }
+
+  if (isAuthorized === null) {
+    return <div>Loading...</div>;
+  }
