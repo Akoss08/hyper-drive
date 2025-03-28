@@ -132,6 +132,58 @@ function Header() {
             )}
           </ul>
         </div>
+
+        <div className="flex gap-4 lg:ml-0 ml-auto">
+          <div
+            className={`flex max-w-xs w-full px-4 py-2.5 transition-all cursor-pointer rounded-full bg-gradient-to-b ${
+              isAuthenticated ? 'hover:from-yellow-700  max-lg:from-yellow-700 max-lg:to-yellow-950' : 'hover:from-gray-700 max-lg:from-indigo-600 max-lg:to-indigo-950'
+            } duration-300 ease-in-out hover:scale-110`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="cursor-pointer fill-stone-200 w-6 h-6">
+              <path d={isAuthenticated ? 'M12 4l1.41 1.41L7.83 11H24v2H7.83l5.58 5.59L12 20l-8-8z' : 'M12 4l-1.41 1.41L16.17 11H0v2h16.17l-5.58 5.59L12 20l8-8z'}></path>
+            </svg>
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  navigate('/logout');
+                  setIsAuthenticated(false);
+                }}
+                className="outline-none cursor-pointer pl-3 text-stone-200"
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  localStorage.setItem(
+                    ACCESS_TOKEN,
+                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzMTY2NjM4LCJpYXQiOjE3NDMxNjQ4MzgsImp0aSI6IjIxZGNhNzRlNzkzZTQ0NDVhNGQ1MjQxZDUxMzhiMDM3IiwidXNlcl9pZCI6M30.nL0ZrMFEwBYO9Lx16xyXDINE848lulHX-wwkKzYj7Ms'
+                  );
+                  localStorage.setItem(
+                    REFRESH_TOKEN,
+                    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MzI1MTIzOCwiaWF0IjoxNzQzMTY0ODM4LCJqdGkiOiI1ZDQxMmFjZmM1MWM0MTMyYjhmN2RjMDc4Njk3MmYzZiIsInVzZXJfaWQiOjN9.VKr0daXjhQjiVE_36TLm6bWmxzphuoYIR01PiLS721I'
+                  );
+                  setIsAuthenticated(true);
+                }}
+                className="outline-none cursor-pointer pl-3 text-stone-200"
+              >
+                Login
+              </button>
+            )}
+          </div>
+          <button id="toggleOpen" className="lg:hidden" onClick={toggleMenu}>
+            <svg className="w-7 h-7" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fillRule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;
