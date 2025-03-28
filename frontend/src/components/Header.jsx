@@ -19,6 +19,14 @@ function Header() {
     setIsAuthenticated(!!token);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
 }
 
 export default Header;
