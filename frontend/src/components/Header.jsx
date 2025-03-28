@@ -44,6 +44,13 @@ function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 transition-transform duration-500 ease-in-out right-0 flex py-3 px-4 sm:px-10 ${!isVisible ? '-translate-y-full' : ''} ${
+        !isOpen ? 'backdrop-blur-xs' : 'backdrop-blur-none'
+      } min-h-[65px] mr-1 ml-1 tracking-wide z-50 rounded-full duration-300 ${isScrolled ? 'shadow-lg shadow-black/25' : 'shadow-none'}`}
+    >
 }
 
 export default Header;
