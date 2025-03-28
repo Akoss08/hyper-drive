@@ -14,6 +14,11 @@ function Header() {
     setIsOpen(!isOpen);
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    setIsAuthenticated(!!token);
+  }, []);
+
 }
 
 export default Header;
