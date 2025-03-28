@@ -51,6 +51,14 @@ function Header() {
         !isOpen ? 'backdrop-blur-xs' : 'backdrop-blur-none'
       } min-h-[65px] mr-1 ml-1 tracking-wide z-50 rounded-full duration-300 ${isScrolled ? 'shadow-lg shadow-black/25' : 'shadow-none'}`}
     >
+      <nav className="flex items-center gap-4 max-w-screen-xl mx-auto w-full">
+        <Link to="/" className="max-sm:hidden">
+          <img src="../src/assets/logos/Black_Modern_Car_Auto_Services_Logo-removebg-preview.png" alt="logo" className="w-[134px]" />
+        </Link>
+        <Link to="/" className="hidden max-sm:block">
+          <img src="../src/assets/logos/Black_Modern_Car_Auto_Services_Logo__1_-removebg-preview.png" alt="logo" className="w-50" />
+        </Link>
+
 }
 
 export default Header;
