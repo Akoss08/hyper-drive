@@ -1,6 +1,14 @@
+@config "../tailwind.config.js";
+
 @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
 @import "tailwindcss";
 
 body {
     font-family: "Michroma", sans-serif;
+    background-color: #27272a;
   }
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(5px);
+}

@@ -1,11 +1,21 @@
-import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import api from '../api';
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
 import { useState, useEffect } from 'react';
+import Login from '../components/Login';
+import { useNavigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
+  const navigate = useNavigate();
+  
   const [isAuthorized, setIsAuthorized] = useState(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const toggleLogin = () => setIsLoginOpen((cur) => !cur);
+
+  useEffect(() => {
+    if (isAuthorized === false && !isLoginOpen) navigate('/');
+  }, [isAuthorized, isLoginOpen, navigate]);
 
   useEffect(() => {
     async function auth() {
@@ -14,6 +24,7 @@ function ProtectedRoute({ children }) {
       try {
         if (!token) {
           setIsAuthorized(false);
+          setIsLoginOpen(true);
           return;
         }
 
@@ -29,6 +40,7 @@ function ProtectedRoute({ children }) {
       } catch (error) {
         console.log(error);
         setIsAuthorized(false);
+        setIsLoginOpen(true);
       }
     }
 
@@ -46,10 +58,12 @@ function ProtectedRoute({ children }) {
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
+        setIsLoginOpen(true);
       }
     } catch (error) {
       console.log(error);
       setIsAuthorized(false);
+      setIsLoginOpen(true);
     }
   }
 
@@ -57,7 +71,7 @@ function ProtectedRoute({ children }) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? children : <Navigate to="/login" />;
+  return isAuthorized ? children : <Login onToggle={toggleLogin} isOpen={isLoginOpen} />;
 }
 
 export default ProtectedRoute;
