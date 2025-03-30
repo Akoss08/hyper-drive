@@ -12,6 +12,12 @@ function ProtectedRoute({ children }) {
   const [isAuthorized, setIsAuthorized] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
+  const toggleLogin = () => setIsLoginOpen((cur) => !cur);
+
+  useEffect(() => {
+    if (isAuthorized === false && !isLoginOpen) navigate('/');
+  }, [isAuthorized, isLoginOpen, navigate]);
+
   useEffect(() => {
     async function auth() {
       const token = localStorage.getItem(ACCESS_TOKEN);
