@@ -2,7 +2,6 @@ import { createBrowserRouter, Outlet, RouterProvider, Navigate } from 'react-rou
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Login from './components/Login';
 import Home from './pages/Home';
 import Cars from './pages/Cars';
 import Car from './pages/Car';
@@ -34,10 +33,12 @@ function Layout() {
 }
 
 function App() {
+  
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: <Layout/>,
       children: [
         {
           path: '/',
