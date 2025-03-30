@@ -1,14 +1,32 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants';
+import { ACCESS_TOKEN } from '../constants';
+import Login from './Login';
 
 function Header() {
   const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem(ACCESS_TOKEN));
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const toggleLogin = () => setIsLoginOpen((cur) => !cur);
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const token = localStorage.getItem(ACCESS_TOKEN);
+      setIsAuthenticated(!!token);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
 
   function toggleMenu() {
     setIsOpen(!isOpen);
