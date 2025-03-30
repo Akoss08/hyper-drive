@@ -3,9 +3,14 @@ import { jwtDecode } from 'jwt-decode';
 import api from '../api';
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
 import { useState, useEffect } from 'react';
+import Login from '../components/Login';
+import { useNavigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
+  const navigate = useNavigate();
+  
   const [isAuthorized, setIsAuthorized] = useState(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
     async function auth() {
