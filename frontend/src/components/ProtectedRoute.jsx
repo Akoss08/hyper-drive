@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import api from '../api';
 import { REFRESH_TOKEN, ACCESS_TOKEN } from '../constants';
@@ -25,6 +24,7 @@ function ProtectedRoute({ children }) {
       try {
         if (!token) {
           setIsAuthorized(false);
+          setIsLoginOpen(true);
           return;
         }
 
@@ -40,6 +40,7 @@ function ProtectedRoute({ children }) {
       } catch (error) {
         console.log(error);
         setIsAuthorized(false);
+        setIsLoginOpen(true);
       }
     }
 
@@ -57,10 +58,12 @@ function ProtectedRoute({ children }) {
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
+        setIsLoginOpen(true);
       }
     } catch (error) {
       console.log(error);
       setIsAuthorized(false);
+      setIsLoginOpen(true);
     }
   }
 
@@ -68,7 +71,7 @@ function ProtectedRoute({ children }) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? children : <Navigate to="/login" />;
+  return isAuthorized ? children : <Login onToggle={toggleLogin} isOpen={isLoginOpen} />;
 }
 
 export default ProtectedRoute;
