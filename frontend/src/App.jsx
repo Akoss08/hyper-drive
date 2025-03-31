@@ -26,19 +26,19 @@ function Layout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <main className="flex-grow mt-20">
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
 }
 
 function App() {
-  
-
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: '/',
