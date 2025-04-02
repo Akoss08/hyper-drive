@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <footer className="from-neutral-500 to-25% to-gray-900 bg-gradient-to-b pt-12 pb-6 px-10 tracking-wide">
+    <footer className="from-neutral-500 to-35% to-neutral-600 bg-gradient-to-b pt-12 pb-6 px-10 tracking-wide">
       <div className="max-w-screen-xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:flex lg:items-center">
