@@ -7,7 +7,8 @@ export default withMT({
       colors: {
         neutral: {
           400: '#b0b0b0',
-          500: '#27272a'
+          500: '#1d1d20',
+          600: '#18181b'
         },
         stone: {
           200: '#d1d5db',
