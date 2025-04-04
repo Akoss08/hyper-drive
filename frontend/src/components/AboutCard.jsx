@@ -35,3 +35,9 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
     x.set(rX);
     y.set(rY);
   };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
