@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 
+export default function AboutCard() {
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -56,3 +57,51 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
           transformStyle: 'preserve-3d',
           transform,
         }}
+      >
+        <Card
+          style={{
+            transform: 'translateZ(75px)',
+            transformStyle: 'preserve-3d',
+          }}
+          className="bg-neutral-600 w-full max-w-[48rem] md:flex-row-reverse"
+        >
+          <CardHeader
+            style={{
+              transform: 'translateZ(75px)',
+            }}
+            shadow={false}
+            floated={false}
+            className="m-3 md:h-[400px] md:w-2/5 shrink-0 rounded-xl"
+          >
+            <img src={circuitImg} alt="card-image" className="h-full w-full object-cover md:block hidden" />
+            <img src={circuitImgRotated} alt="card-image" className="h-full w-full object-cover md:hidden block" />
+          </CardHeader>
+          <CardBody
+            style={{
+              transform: 'translateZ(30px)',
+            }}
+          >
+            <Typography variant="h6" className="mb-4 uppercase text-gray-400">
+              the experience
+            </Typography>
+            <Typography variant="h4" className="mb-2 text-gray-600">
+              Feel the adrenaline rush as you get behind the wheel of a high-performance sports car.
+            </Typography>
+            <Typography className="mb-8 font-normal text-gray-700">
+              Choose your favorite supercar, select a world-class racing circuit, and push the limits in a safe and exhilarating environment. No speed limits—just pure
+              driving excitement!
+            </Typography>
+            <Link to="/cars" className="inline-block">
+              <Button variant="text" className="flex cursor-pointer items-center gap-2 bg-amber-100 hover:bg-amber-200">
+                Show cars
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                </svg>
+              </Button>
+            </Link>
+          </CardBody>
+        </Card>
+      </motion.div>
+    </motion.section>
+  );
+}
