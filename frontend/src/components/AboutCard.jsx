@@ -41,3 +41,10 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
     y.set(0);
   };
 
+  return (
+    <motion.section
+      initial={{ y: 150, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ ease: 'easeInOut', duration: 1 }}
+      className="flex justify-center items-center min-h-screen m-5 pt-10"
+    >
