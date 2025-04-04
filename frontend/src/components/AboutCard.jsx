@@ -48,3 +48,11 @@ const HALF_ROTATION_RANGE = 32.5 / 2;
       transition={{ ease: 'easeInOut', duration: 1 }}
       className="flex justify-center items-center min-h-screen m-5 pt-10"
     >
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform,
+        }}
