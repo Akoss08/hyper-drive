@@ -2,6 +2,7 @@ import HorizontalCarScrollSection from '../components/HorizontalCarScrollSection
 import { motion } from 'framer-motion';
 import { ReactLenis } from 'lenis/dist/lenis-react';
 import AboutCard from '../components/AboutCard';
+import GallerySection from '../components/GallerySection';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       >
         <HorizontalCarScrollSection />
         <AboutCard />
+        <GallerySection />
 
         <Schedule />
       </ReactLenis>
