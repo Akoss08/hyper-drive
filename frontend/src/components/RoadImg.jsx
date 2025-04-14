@@ -1,4 +1,4 @@
-import roadImg from '../assets/ChatGPT_Image_2025._ápr._1._12_57_37-removebg-preview.png';
+import roadImg from '/home-page-main-images/ChatGPT_Image_2025._ápr._1._12_57_37-removebg-preview.png';
 
 const RoadImg = () => {
   return (

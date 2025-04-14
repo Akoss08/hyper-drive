@@ -41,7 +41,7 @@ function PriceSection() {
             <div key={car.id} className="flex justify-center">
               <Card className="w-136 bg-blue-gray-200">
                 <CardHeader shadow={false} floated={false} className="h-56 bg-gradient-to-bl from-blue-gray-300 to-blue-gray-900">
-                  <img src={car.image_asset_path} alt="card-image" className="max-h-full w-full object-cover" />
+                  <img src={`/car-cards-images/${car.image_asset_path}`} alt="card-image" className="max-h-full w-full object-cover" />
                 </CardHeader>
                 <CardBody>
                   <div className="mb-2 flex items-center justify-between">

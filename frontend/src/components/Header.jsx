@@ -68,10 +68,10 @@ function Header() {
       >
         <nav className="flex items-center gap-4 max-w-screen-xl mx-auto w-full">
           <Link to="/" className="max-sm:hidden">
-            <img src="../src/assets/logos/Black_Modern_Car_Auto_Services_Logo-removebg-preview.png" alt="logo" className="w-[134px]" />
+            <img src="/logos/Black_Modern_Car_Auto_Services_Logo-removebg-preview.png" alt="logo" className="w-[134px]" />
           </Link>
           <Link to="/" className="hidden max-sm:block">
-            <img src="../src/assets/logos/Black_Modern_Car_Auto_Services_Logo__1_-removebg-preview.png" alt="logo" className="w-50" />
+            <img src="/logos/Black_Modern_Car_Auto_Services_Logo__1_-removebg-preview.png" alt="logo" className="w-50" />
           </Link>
 
           <div
@@ -102,7 +102,7 @@ function Header() {
             >
               <li className="mb-6 hidden max-lg:block">
                 <Link to="/">
-                  <img src="../src/assets/logos/Screenshot_2025-03-27_172543-removebg-preview.png" alt="logo" className="w-36" />
+                  <img src="/logos/Screenshot_2025-03-27_172543-removebg-preview.png" alt="logo" className="w-36" />
                 </Link>
               </li>
               {isAuthenticated && isOpen && <li className="max-lg:py-3 max-lg:text-2xl max-lg:px-3 max-lg:mt-5">Username123</li>}
