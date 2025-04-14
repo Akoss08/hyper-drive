@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
-import carMeetImg from '../assets/cars/sport-cars-parade-race-highway.jpg';
+import carMeetImg from '/gallery-section/sport-cars-parade-race-highway.jpg';
 
 const GalleryCenterImage = () => {
   const { scrollY } = useScroll();

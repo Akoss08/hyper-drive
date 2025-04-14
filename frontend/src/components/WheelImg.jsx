@@ -1,4 +1,4 @@
-import wheelImg from '../assets/cars/wheel.png';
+import wheelImg from '/home-page-main-images/wheel.png';
 import { motion } from 'framer-motion';
 
 const WheelImg = ({ rotate, startingPosition }) => {

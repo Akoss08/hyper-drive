@@ -1,7 +1,7 @@
-import carGallery1 from '../assets/cars/milan-csizmadia-CzDNZDO53n0-unsplash.webp';
-import carGallery2 from '../assets/cars/todd-jiang-uFbmTCtLkqg-unsplash (1).jpg';
-import carGallery3 from '../assets/cars/tyler-clemmensen-kGCvCx5qyjM-unsplash.webp';
-import carGallery4 from '../assets/cars/wes-tindel-M-eRTCunPYo-unsplash.webp';
+import carGallery1 from '/gallery-section/milan-csizmadia-CzDNZDO53n0-unsplash.webp';
+import carGallery2 from '/gallery-section/todd-jiang-uFbmTCtLkqg-unsplash (1).jpg';
+import carGallery3 from '/gallery-section/tyler-clemmensen-kGCvCx5qyjM-unsplash.webp';
+import carGallery4 from '/gallery-section/wes-tindel-M-eRTCunPYo-unsplash.webp';
 import GalleryParallaxImage from './GalleryParallaxImage';
 
 const GalleryParallaxImages = () => {

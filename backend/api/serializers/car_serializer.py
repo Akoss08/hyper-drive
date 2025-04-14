@@ -16,5 +16,7 @@ class CarSerializer(serializers.ModelSerializer):
             "torque",
             "top_speed",
             "kph_from_zero_to_hundred",
+            "price",
             "model_asset_path",
+            "image_asset_path"
         ]
