@@ -6,7 +6,7 @@ from rest_framework.exceptions import PermissionDenied
 
 
 class CarListCreate(generics.ListCreateAPIView):
-    queryset = Car.objects.all()
+    queryset = Car.objects.all().order_by("id")
     serializer_class = CarSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
