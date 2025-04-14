@@ -13,6 +13,11 @@ class Car(models.Model):
     kph_from_zero_to_hundred = models.DecimalField(
         max_digits=4, decimal_places=1
     )
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        validators=[MinValueValidator(Decimal("0.00"))],
+    )
     model_asset_path = models.CharField()
 
     def __str__(self):
