@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.validators import MinValueValidator
+from decimal import Decimal
 
 
 class Car(models.Model):
@@ -19,6 +21,7 @@ class Car(models.Model):
         validators=[MinValueValidator(Decimal("0.00"))],
     )
     model_asset_path = models.CharField()
+    image_asset_path = models.CharField()
 
     def __str__(self):
         return f"{self.make} {self.model} ({self.year})"
