@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider, Navigate, useLocation } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -23,13 +23,18 @@ function RegisterAndLogout() {
 }
 
 function Layout() {
+  const location = useLocation();
+  const hideFooterOnRoutes = ['/cars'];
+
+  const shouldHideFooter = hideFooterOnRoutes.includes(location.pathname);
+  
   return (
     <>
       <Header />
-      <main className="flex-grow mt-20">
+      <main className="flex-grow">
         <Outlet />
       </main>
-      <Footer />
+      {!shouldHideFooter && <Footer />}
     </>
   );
 }
