@@ -59,12 +59,22 @@ function Cars() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="relative h-screen flex items-center justify-center">
       <Canvas shadows>
         <Suspense fallback={null}>
-          <CarScene />
+          <CameraAndLight />
+          {cars.length > 0 && cars.map((car, idx) => <CarModel key={car.id} model={car.model_asset_path} isVisible={idx === index} />)}
         </Suspense>
       </Canvas>
+      {cars.length > 0 ? (
+        <CarDetails car={cars[index]} />
+      ) : (
+        <div className="absolute flex items-center justify-center scale-400">
+          <LoadingSpinner />
+        </div>
+      )}
+
+      <NavigationButtons onNext={handleNext} onPrev={handlePrev} isDisabled={!prevUrl && index === 0} />
     </div>
   );
 }
