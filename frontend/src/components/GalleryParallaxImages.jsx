@@ -1,5 +1,5 @@
 import carGallery1 from '/gallery-section/milan-csizmadia-CzDNZDO53n0-unsplash.webp';
-import carGallery2 from '/gallery-section/todd-jiang-uFbmTCtLkqg-unsplash (1).jpg';
+import carGallery2 from '/gallery-section/todd-jiang-uFbmTCtLkqg-unsplash-_1__1.avif';
 import carGallery3 from '/gallery-section/tyler-clemmensen-kGCvCx5qyjM-unsplash.webp';
 import carGallery4 from '/gallery-section/wes-tindel-M-eRTCunPYo-unsplash.webp';
 import GalleryParallaxImage from './GalleryParallaxImage';

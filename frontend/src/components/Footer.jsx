@@ -7,10 +7,10 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="lg:flex lg:items-center">
             <Link to="/" className="max-sm:hidden">
-              <img src="/logos/Black_Modern_Car_Auto_Services_Logo-removebg-preview.png" alt="logo" className="w-48" />
+              <img src="/logos/Black_Modern_Car_Auto_Services_Logo-removebg-preview.avif" alt="logo" className="w-48" />
             </Link>
             <Link to="/" className="hidden max-sm:block">
-              <img src="/logos/Black_Modern_Car_Auto_Services_Logo__1_-removebg-preview.png" alt="logo" className="w-48" />
+              <img src="/logos/Black_Modern_Car_Auto_Services_Logo__1_-removebg-preview.avif" alt="logo" className="w-48" />
             </Link>
           </div>
 

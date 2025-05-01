@@ -4,9 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Cars from './pages/Cars';
-import Car from './pages/Car';
 import Circuits from './pages/Circuits';
-import Circuit from './pages/Circuit';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import Account from './pages/Account';
@@ -60,14 +58,6 @@ function App() {
         {
           path: '/circuits',
           element: <Circuits />,
-        },
-        {
-          path: '/cars/:id',
-          element: <Car />,
-        },
-        {
-          path: '/circuits/:id',
-          element: <Circuit />,
         },
         {
           path: '/register',

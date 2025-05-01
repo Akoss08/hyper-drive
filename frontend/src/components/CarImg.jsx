@@ -1,4 +1,4 @@
-import carImg from '/home-page-main-images/pexels-pixabay-261986-removebg-preview.png';
+import carImg from '/home-page-main-images/pexels-pixabay-261986-removebg-preview.avif';
 
 const CarImg = () => {
   return (

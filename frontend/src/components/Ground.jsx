@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { MeshReflectorMaterial } from '@react-three/drei';
 import { LinearSRGBColorSpace, RepeatWrapping, TextureLoader } from 'three';
+import terrainRoughnessUrl from '/textures/terrain-roughness.avif';
+import terrainNormalUrl from '/textures/terrain-normal.avif';
 
 export function Ground() {
-  const [roughness, normal] = useLoader(TextureLoader, ['textures/terrain-roughness.jpg', 'textures/terrain-normal.jpg']);
+  const [roughness, normal] = useLoader(TextureLoader, [terrainRoughnessUrl, terrainNormalUrl]);
 
   useEffect(() => {
     [normal, roughness].forEach((t) => {
