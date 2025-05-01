@@ -54,6 +54,9 @@ function Cars() {
     });
   };
 
+  const handlePrev = () => {
+    setIndex((prev) => (prev - 1 + cars.length) % cars.length);
+  };
 
   return (
     <div className="h-screen">
