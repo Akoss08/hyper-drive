@@ -38,6 +38,10 @@ function Cars() {
     }
   }, []);
 
+  useEffect(() => {
+    fetchCars('/api/car/');
+  }, [fetchCars]);
+
 
   return (
     <div className="h-screen">
