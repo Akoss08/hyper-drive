@@ -42,6 +42,18 @@ function Cars() {
     fetchCars('/api/car/');
   }, [fetchCars]);
 
+  const handleNext = () => {
+    setIndex((prev) => {
+      const nextIndex = prev + 1;
+
+      if (nextIndex === cars.length - 1 && nextUrl) {
+        fetchCars(nextUrl);
+      }
+
+      return nextIndex % cars.length;
+    });
+  };
+
 
   return (
     <div className="h-screen">
