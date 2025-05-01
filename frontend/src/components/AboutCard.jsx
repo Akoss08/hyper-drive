@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardBody, Typography, Button } from '@material-tailwind/react';
-import circuitImg from '/home-page-main-images/Screenshot 2025-04-03 102409.png';
-import circuitImgRotated from '/home-page-main-images/Screenshot 2025-04-03 102409 - Copy.png';
+import circuitImg from '/home-page-main-images/Screenshot 2025-04-03 102409.avif';
+import circuitImgRotated from '/home-page-main-images/Screenshot 2025-04-03 102409 - Copy.avif';
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
