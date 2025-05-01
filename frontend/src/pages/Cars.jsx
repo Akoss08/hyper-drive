@@ -14,6 +14,31 @@ function Cars() {
   const [nextUrl, setNextUrl] = useState(null);
   const [prevUrl, setPrevtUrl] = useState(null);
 
+  const fetchCars = useCallback(async (url) => {
+    try {
+      const resp = await api.get(url);
+      const data = resp.data;
+
+      data.results.forEach((car) => {
+        useGLTF.preload(car.model_asset_path);
+      });
+
+      setCars((prevCars) => {
+        const existingIds = new Set(prevCars.map((car) => car.id));
+        const newCars = data.results.filter((car) => !existingIds.has(car.id));
+        return [...prevCars, ...newCars];
+      });
+
+      setNextUrl(data.next);
+      setPrevtUrl(data.previous);
+    } catch (error) {
+      console.log(error);
+      const message = error.response ? error.response.data.detail : 'Something went wrong during loading the cars!';
+      alert(message);
+    }
+  }, []);
+
+
   return (
     <div className="h-screen">
       <Canvas shadows>
