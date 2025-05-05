@@ -5,7 +5,7 @@ function CarDetails({ car }) {
   const navigate = useNavigate();
 
   return (
-    <div className="absolute flex flex-col h-[75vh] w-[75vw] text-gray-400 z-50 pointer-events-none">
+    <div className="absolute flex flex-col h-[75vh] w-[75vw] text-gray-400 pointer-events-none">
       <div className="flex flex-col h-full w-full">
         <div className="flex flex-col justify-center items-center py-2">
           <h1 className="text-3xl font-bold">
