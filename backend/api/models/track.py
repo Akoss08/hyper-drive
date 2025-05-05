@@ -7,6 +7,7 @@ class Track(models.Model):
     distance_km = models.DecimalField(max_digits=4, decimal_places=2)
     avg_lap_time_minute = models.DecimalField(max_digits=4, decimal_places=2)
     difficulty = models.CharField(max_length=20)
+    number_of_turns = models.PositiveSmallIntegerField()
     model_asset_path = models.CharField()
 
     def __str__(self):
