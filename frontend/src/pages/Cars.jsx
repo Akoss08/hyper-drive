@@ -2,8 +2,8 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense, useEffect, useState, useCallback } from 'react';
 import api from '../api';
 import { useGLTF } from '@react-three/drei';
-import CameraAndLight from '../components/CameraAndLight';
-import CarModel from '../components/CarModel';
+import CarsCameraAndLight from '../components/CarsCameraAndLight';
+import Model from '../components/Model';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CarDetails from '../components/CarDetails';
 import NavigationButtons from '../components/NavigationButtons';
@@ -62,8 +62,8 @@ function Cars() {
     <div className="relative h-screen flex items-center justify-center">
       <Canvas shadows>
         <Suspense fallback={null}>
-          <CameraAndLight />
-          {cars.length > 0 && cars.map((car, idx) => <CarModel key={car.id} model={car.model_asset_path} isVisible={idx === index} />)}
+          <CarsCameraAndLight />
+          {cars.length > 0 && cars.map((car, idx) => <Model key={car.id} model={car.model_asset_path} isVisible={idx === index} />)}
         </Suspense>
       </Canvas>
       {cars.length > 0 ? (
