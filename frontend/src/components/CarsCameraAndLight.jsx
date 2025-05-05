@@ -1,7 +1,7 @@
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { Ground } from '../components/Ground';
+import { Ground } from './Ground';
 
-function CameraAndLight() {
+function CarsCameraAndLight() {
   return (
     <>
       <OrbitControls enablePan={false} maxDistance={15} autoRotate={true} autoRotateSpeed={1} minDistance={7} target={[0, 0.35, 0]} maxPolarAngle={1.45} />
@@ -15,4 +15,4 @@ function CameraAndLight() {
   );
 }
 
-export default CameraAndLight;
+export default CarsCameraAndLight;
