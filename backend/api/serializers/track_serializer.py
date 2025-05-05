@@ -12,5 +12,6 @@ class TrackSerializer(serializers.ModelSerializer):
             "distance_km",
             "avg_lap_time_minute",
             "difficulty",
+            "number_of_turns",
             "model_asset_path",
         ]

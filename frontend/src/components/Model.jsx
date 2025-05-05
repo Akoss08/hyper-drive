@@ -3,7 +3,7 @@ import { Mesh, Box3, Vector3 } from 'three';
 import { useGLTF } from '@react-three/drei';
 import { MODEL_SETTINGS } from '../constants';
 
-function CarModel({ model, isVisible }) {
+function Model({ model, isVisible }) {
   const { scene } = useGLTF(model);
 
   useEffect(() => {
@@ -27,9 +27,9 @@ function CarModel({ model, isVisible }) {
 
   return (
     <>
-      <primitive object={scene} visible={isVisible}/>
+      <primitive object={scene} visible={isVisible} />
     </>
   );
 }
 
-export default CarModel;
+export default Model;
